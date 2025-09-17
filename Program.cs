@@ -28,10 +28,10 @@ builder.Services.AddSwaggerGen(c =>
     var securityScheme = new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Description = "Enter 'Bearer {token}'",
+        Description = "Paste your JWT token only (without the 'Bearer ' prefix)",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        Scheme = "bearer", // Swagger will prepend 'Bearer ' automatically
         BearerFormat = "JWT",
         Reference = new OpenApiReference
         {

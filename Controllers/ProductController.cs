@@ -86,7 +86,7 @@ namespace Ecommerse.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Edit(int id, ProductCreatrDTOs dto)
+        public IActionResult Edit(int id, [FromForm]ProductCreatrDTOs dto)
         {
             var existing = _productRepo.GetUingID(id);
             if (existing == null) return NotFound();
@@ -107,7 +107,7 @@ namespace Ecommerse.Controllers
             if (_productRepo.Delete(id))
             {
                 _productRepo.Save();
-                return Ok();
+                return Ok(); 
             }
             return NotFound();
         }

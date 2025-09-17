@@ -88,14 +88,14 @@ namespace Ecommerse.Controllers
                             User_claims.Add(new Claim (ClaimTypes.Role, Role));    // add  role  in Claims 
                         }
                         var SignInKey =
-                            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SigningKey"]));  // Make  sinin key  make  Cradintal Valid  
+                            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]));  // Make  sinin key  make  Cradintal Valid  
 
                         SigningCredentials credentials = new SigningCredentials(SignInKey, SecurityAlgorithms.HmacSha256);   // Make  Cradentials By key  and  Algorizem Hashing  
 
 
                         JwtSecurityToken token = new JwtSecurityToken(
-                            issuer: _configuration["IWT:Issuer"],
-                            audience: _configuration["JWT:Audience"],
+                            issuer: _configuration["Jwt:Issuer"],
+                            audience: _configuration["Jwt:Audience"],
                             signingCredentials: credentials,
                             claims:User_claims,
                             expires: DateTime.UtcNow.AddHours(1)
